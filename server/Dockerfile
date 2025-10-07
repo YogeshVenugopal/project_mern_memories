@@ -16,10 +16,11 @@ CMD ["npm", "start"]
 FROM node:20-alpine as prod
 
 WORKDIR /app
+ENV NODE_ENV=production
 
 COPY package*.json ./
 
-RUN npm install --only=production
+RUN npm install --omit=dev
 
 COPY . .
 
